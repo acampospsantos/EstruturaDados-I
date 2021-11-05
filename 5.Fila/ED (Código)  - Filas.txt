@@ -1,0 +1,54 @@
+public class QueueSinglyLinkedList <T extends Item> implements IQueue<T> { 
+
+
+
+
+
+
+ @Override
+	public T dequeue() {
+		if(this.list.isEmpty() != true) {
+			SinglyListNode<T> oldHead = this.getHead();
+			this.list.delete(oldHead);
+			result = oldHead;
+		} else {
+			result = null;
+		}
+		return result.getItem();
+	}
+
+	
+	@Override
+	public void queue(T item) {
+		this.list.addLast(item);
+	}
+
+
+
+       @Override
+       public void queue(T item){
+           this.list.addFirst(item);
+      }
+
+      @Override
+      public T dequeue(){
+          SinglyListNode<T> result = this.head;
+          if(this.list.isEmpty() != true) {
+             SinglyListNode<T> oldTail = this.head;
+             oldTail = this.list.FindTail();
+             this.list.delete(oldTail);  
+             result = oldTail;
+          } else {
+             result = null 
+          }
+          return result.getItem();           
+      }
+
+
+public SinglyListNode<T> FindTail (){
+    SinglyListNode<T> tail = this.head;
+    while(tail.getNext() != null) {
+          tail = tail.getNext(); 
+    }
+    return tail;
+}
